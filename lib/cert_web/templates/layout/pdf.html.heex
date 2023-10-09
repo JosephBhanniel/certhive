@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag assigns[:page_title] || "Billing", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/pdf.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/bootstrap.min.css")}/>
+     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/bootstrap.bundle.min.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/pdf.js")}></script>
+  
+  <style>
+  .certificate {
+    background-color: #f7f7f7;
+    border: 2px solid #ddd;
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .certificate .logo {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background-image: url(logo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+ img{
+  text-align:center;
+  border-radius: 100%;
+ 
+  width:140px;
+  height:auto;
+ }
+
+
+  .certificate h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .certificate p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+</style>
+  
+  </head>
+  <body>
+    <div id="layout" class="layout">
+   
+      <main>
+         <%= link "Go Back Home", to: Routes.certificate_path(@conn, :index), id: "btn", class: "btn btn-primary m-4" %>
+        <div id="grid" class="grid">
+          <div id="menu" class="menu">
+            <div id="block" class="block">
+              <div>Print</div>
+              <div class="button-print" onclick="display()">Print</div>
+             
+            </div>
+             
+          </div>
+          <div id="preview"></div>
+        </div>
+      </main>
+    </div>
+    <div id="root">
+      <%= @inner_content %>
+    </div>
+    <script>
+         function display(){
+          document.getElementById("btn").style.display = "none";
+         }
+    </script>
+  </body>
+</html>

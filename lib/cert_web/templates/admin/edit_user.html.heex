@@ -1,0 +1,29 @@
+<div class="container">
+<div class="card shadow" id="profile">
+ <div class="d-flex justify-content-center my-4"><h5 class="card-title" > <i class="fas fa-user mx-2"></i>Edit Profile</h5></div>
+
+<.form  let={f} for={@changeset} action={Routes.admin_path(@conn, :update_user, @user)}>
+  <%= if @changeset.action do %>
+    <div class="text-danger">
+      <p class="text-center">Oops Profile update Failed!</p>
+    </div>
+  <% end %>
+
+
+
+   <div clas="text-center ">
+
+    <div class="form-group mx-5 px-5">
+  <%= label f, :status, class: "control-label fs-5" %>
+  <%= select f, :status, ["active", "deleted"], class: "form-control" %>
+  <%= error_tag f, :status %>
+</div>
+
+   </div>
+
+  <div class="form-group text-center">
+    <%= submit "submit", class: "btn btn-primary" %>
+  </div>
+</.form>
+</div>
+</div>

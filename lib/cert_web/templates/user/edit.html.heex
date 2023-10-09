@@ -1,0 +1,9 @@
+<div class="container">
+<div class="card shadow" id="profile">
+ <div class="d-flex justify-content-center my-4"><h5 class="card-title" > <i class="fas fa-user mx-2"></i>Edit Profile</h5></div>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :update, @user)) %>
+
+</div>
+
+</div>

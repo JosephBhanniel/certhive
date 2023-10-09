@@ -1,0 +1,24 @@
+<div class="container">
+
+<div class="card shadow" id="profile">
+  <div class="card-body">
+    <div class="d-flex justify-content-center"><h5 class="card-title" > <i class="fas fa-user mx-2"></i>User Profile</h5></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Firstname: <%= @user.firstname %>
+      </li>
+      <li class="list-group-item">
+         Lastname: <%= @user.lastname %>
+      </li>
+      <li class="list-group-item">
+       Username: <%= @user.username %>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        <div><i class="fas fa-envelope"></i> <%= @user.email %></div>
+        <%= link "Edit", to: Routes.admin_path(@conn, :edit_user, @user), class: "btn btn-primary" %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</div>
