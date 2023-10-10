@@ -1,0 +1,70 @@
+<div class="users">
+<div class="container">
+        <h1>Users</h1>
+        <table id="myTable" class="table table-bordered table-striped shadow rounded">
+            <thead>
+                <tr class="bg-dark text-light">
+                    <th class="p-3">Firstname</th>
+                    <th class="p-3">Lastname</th>
+                    <th class="p-3">Username</th>
+                    <th class="p-3">Email</th>
+                    <th class="p-3">Role</th>
+                    <th class="p-3">Status</th>
+                    <th class="p-3">Actions</th>
+                    <th class="p-3"></th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                <%= for user <- @users do %>
+                  <tr>
+                   <td class="p-3">
+                       <%= user.firstname %>
+                   </td>
+                    <td class="p-3">
+                       <%= user.lastname %>
+                   </td>
+                    <td class="p-3">
+                       <%= user.username %>
+                   </td>
+                    <td class="p-3">
+                       <%= user.email %>
+                   </td>
+                    <td class="p-3">
+                       <%= user.user_type %>
+                   </td>
+                    <td class="p-3">
+                       <%= user.status %>
+                   </td>
+                    <td class="p-3">
+                       <%= link "View", to: Routes.admin_path(@conn, :view, user), class: "bg-primary p-2 text-light rounded" %>
+                       </td>
+                     <td class="p-3">
+                       <%= link "Delete", to: Routes.admin_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "text-white bg-danger hover:underline me-2 p-2 rounded" %>
+                   </td>
+                    </tr>
+                 <% end %>
+               
+            </tbody>
+        </table>
+        <div id="pagination">
+        
+        <span>
+  <%= link "Prev Page",
+      class: "button",
+      disabled: @page.page_number < 2,
+      to: Routes.admin_path(@conn, :users, page: @page.page_number - 1) %>
+</span>
+<span>
+  <%= link "Next Page",
+      class: "button",
+      disabled: @page.page_number >= @page.total_pages,
+      to: Routes.admin_path(@conn, :users, page: @page.page_number + 1) %>
+</span>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,15 @@
+
+
+<div class="certificate">
+  <div class="logo"><img src={Routes.static_path(@conn, "/images/Certihive1.jpg")}></div>
+  <h1>Certificate of Completion</h1>
+  <p>This is to certify that</p>
+  <p><em><%= @user.firstname %> <%= @user.lastname %></em></p>
+  <p>has successfully completed the course:</p>
+  <p><em><%= @course.name %></em></p>
+  <p><%= @course.description %></p>
+  <p>Duration: <%= @course.duration %> Month</p>
+
+</div>
+
+

@@ -1,0 +1,59 @@
+<.form  let={f} for={@changeset} action={@action}>
+  <%= if @changeset.action do %>
+    <div class="text-danger">
+      <p class="text-center">Oops Registration Failed!</p>
+    </div>
+  <% end %>
+
+<div class="row">
+<div class="col-md-6">
+ 
+
+  <div class="form-group ">
+    <%= label f, :firstname, class: "control-label fs-5" %>
+    <%= text_input f, :firstname, class: "form-control", required: "true"  %>
+    <%= error_tag f, :firstname %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :lastname, class: "control-label fs-5" %>
+    <%= text_input f, :lastname, class: "form-control", required: "true"  %>
+    <%= error_tag f, :lastname %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :username, class: "control-label fs-5" %>
+    <%= text_input f, :username, class: "form-control", required: "true"  %>
+    <%= error_tag f, :username %>
+  </div>
+
+</div>
+
+<div class="col-md-6">
+
+  <div class="form-group">
+    <%= label f, :email, class: "control-label fs-5" %>
+    <%= email_input f, :email, class: "form-control", required: "true" %>
+    <%= error_tag f, :email %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password, class: "control-label fs-5" %>
+    <%= password_input f, :password, class: "form-control", required: "true" %>
+    <%= error_tag f, :password %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :password_confirmation, class: "control-label fs-5" %>
+    <%= password_input f, :password_confirmation, class: "form-control", required: "true" %>
+    <%= error_tag f, :password_confirmation %>
+  </div>
+  </div>
+
+</div>
+
+  <div class="form-group text-center">
+    <%= submit "submit", class: "btn btn-primary" %>
+    <p class="my-2 mx-3"> Already have an account? <%= link "Login", to: Routes.session_path(@conn, :new), class: "text-primary px-2 my-4 rounded" %> </p>
+  </div>
+</.form>

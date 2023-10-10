@@ -1,0 +1,31 @@
+<section class="welcome-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Hello, <%= @user.firstname %>!</h1>
+        <p>You have full access to all the following features.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="feature shadow P-2 mt-2" id="welcom">
+          <i class="fas fa-users p-2 "></i>
+          <h3>Total Active Users</h3>
+          <p><%= @active_user_count %></p>
+        </div>
+      </div>
+
+       <div class="col-lg-4">
+        <div class="feature shadow P-2 mt-2" id="welcom">
+          <i class="fas fa-users p-2 "></i>
+          <h3>Total Inactive Users</h3>
+          <p><%= @inactive_user_count %></p>
+        </div>
+      </div>
+
+     
+    </div>
+  </div>
+</section>
+
+

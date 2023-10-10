@@ -1,0 +1,166 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="csrf-token" content={csrf_token_value()}>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/css/bootstrap.min.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/user.css")}/>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/admin.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/js/bootstrap.bundle.min.js")}></script>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/jquery-3.6.1.min")}></script>
+  <style>
+    /* Custom styles for the sidebar */
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar {
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 250px;
+      padding: 20px;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar-logo img {
+      width: 80px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .sidebar-nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar{
+      display:none;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+     .sidebar-nav a:hover {
+      color: #cb6fb3;
+      text-decoration: none;
+      background:#fff;
+      padding:5px;
+      border-radius:10px;
+      transition: 0.5s;
+    }
+
+    #welcom{
+        background-color: #000;
+        color: #fff;
+        padding: 8px;
+        border-radius:10px;
+        text-align: center;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .navbar{
+        display:block;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-logo">
+       
+        <img src={Routes.static_path(@conn, "/images/Certihive1.jpg")} alt="Logo" style="border-radius:100%; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);"/>
+      
+    </div>
+    <div class="sidebar-nav">
+      <ul>
+        <li><%= link "Dashboard", to: Routes.admin_path(@conn, :index) %>  </li>
+        <li> <%= link "My Profile", to: Routes.admin_path(@conn, :user_profile) %></li>
+          <li> <%= link "Users", to: Routes.admin_path(@conn, :users) %></li>
+       <%= link "Logout", to: Routes.session_path(@conn, :delete), data: [confirm: "Are you sure?"] %>      </ul>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- Your page content goes here -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+        aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li><%= link "Dashboard", to: Routes.admin_path(@conn, :index), class: "nav-link" %>  </li>
+        <li> <%= link "Users", to: Routes.admin_path(@conn, :users), class: "nav-link" %></li>
+          <li class="nav-item">
+             <li> <%= link "My Profile", to: Routes.admin_path(@conn, :user_profile), class: "nav-link" %></li>
+          </li>
+          <li class="nav-item">
+            <%= link "Logout", to: Routes.session_path(@conn, :delete), data: [confirm: "Are you sure?"], class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+  // Check if user_type is "Admin"
+  var userType = '<%= @user_type %>';
+  if (userType === "Regular") {
+    // Redirect to logout page
+    window.location.href = "/logout";
+  }
+</script>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.navbar-toggler').click(function() {
+        $('.sidebar').toggleClass('show');
+      });
+    });
+  </script>
+    
+    <%= @inner_content %>
+    
+  </body>
+</html>

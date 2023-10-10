@@ -1,0 +1,10 @@
+<div class="container">
+
+<div class="card shadow" id="profile">
+<h4>Kindly choose the course  </h4>
+<%= for course <- @courses do %>
+  <%= link(course.name, to: Routes.certificate_path(@conn, :show, course.id)) %>
+<% end %>
+
+</div>
+</div>
