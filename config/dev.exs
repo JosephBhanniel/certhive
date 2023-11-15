@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :cert, Cert.Repo,
-  username: "hanniel_dev",
-  password: "hanniel1_prod",
+  username: "postgres",
+  password: "postgres",
   hostname: "localhost",
   database: "cert_dev",
   stacktrace: true,
